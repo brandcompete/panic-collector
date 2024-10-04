@@ -4,7 +4,7 @@ go 1.23
 
 require (
 	github.com/ProtonMail/go-crypto v1.0.0
-	github.com/ProtonMail/panicwrap v0.0.0-20160908102933-d56c8edef482
+	github.com/bugsnag/panicwrap v1.3.4
 	google.golang.org/grpc v1.67.1
 	google.golang.org/protobuf v1.34.2
 )
