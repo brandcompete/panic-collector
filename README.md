@@ -7,25 +7,36 @@ with the matching Methods,
 according to the .proto file and the generated pgp public/private key on the server.
 
 The usage of the SDK is as simple as that:
-
 ```go
-func main() {
-    config := &paniccollector.Config{
-        GrpcServerAddr: "127.0.0.1:50051",
-    }
+package main
 
-    err := paniccollector.Initialize(config)
-    if err != nil {
-        fmt.Printf("Failed to initialize panic collector: %v\n", err)
-        return
-    }
-    
-    fmt.Println("Hello World! About to cause a panic...")
-    
-    panic("This is a test panic!")
+import (
+	"fmt"
+	pc "github.com/brandcompete/panic-collector"
+)
+
+func main() {
+	config := &pc.Config{
+		GrpcServerAddr: "127.0.0.1:50051",
+	}
+
+	err := pc.Initialize(config)
+	if err != nil {
+		fmt.Printf("Failed to initialize panic collector: %v\n", err)
+		return
+	}
+
+	fmt.Println("Hello World! About to cause a panic...")
+
+	panic("This is a test panic!")
 }
 ```
+use
+```bash
+go get -u github.com/brandcompete/panic-collector
+```
+to install the package.
 
-Use your Endpoint address to configure the collector and initialize it.
+And use your Endpoint address to configure the collector and initialize it.
 
 Any panic will now get fully end to end encrypted submitted via gRPC to your Endpoint.
